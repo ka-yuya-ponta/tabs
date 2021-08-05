@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+  <ul class="tabs">
+    <li v-bind:class="{'active':isLike==='1'}" v-on:click="change('1')">タブ1</li>
+    <li v-bind:class="{'active':isLike==='2'}" v-on:click="change('2')">タブ2</li>
+    <li v-bind:class="{'active':isLike==='3'}" v-on:click="change('3')">タブ3</li>
+
+  </ul>
+  <ul>
+    <li v-if="isLike==='1'"class='contents'>コンテンツ1</li>
+    <li v-if="isLike==='2'" class="contents">コンテンツ2</li>
+    <li v-if="isLike==='3'" class="contents">コンテンツ3</li>
+   
+  </ul>
+  </div>
+  <script>
+    const vm =new Vue({
+      el:'#app',
+      data:{
+        isLike:'1',
+      },
+      methods:{
+        change(num){
+          this.isLike=num;
+
+        },
+      },
+      
+    })
+  </script>
+  <style>
+    #app {
+      width: 600px;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none; 
+    }
+    .tabs{
+      display: flex;
+      text-align: center;
+     
+    }
+    .tabs li {
+      padding: 5px 30px;
+      width: 33%;
+      border:  1px solid gainsboro;
+      border-bottom:none ;
+      border-left: none;
+      border-collapse: collapse;
+    }
+    .tabs li:nth-of-type(1) {
+      border-left: 1px solid gainsboro;
+    }
+    
+
+    .active {
+      background-color: black;
+      color: white;
+    }
+    .contents {
+      height: 400px;
+      border: gainsboro 1px solid;
+    }
+    
+
+  </style>
+ 
+  
+
+  </body>
+</body>
+</html>
